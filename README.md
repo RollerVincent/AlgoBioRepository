@@ -4,5 +4,5 @@
 indem sich jeweils ein weiterer Ordner (Files) mit den Datein zu den Aufgaben 
 und ein Ordner (IntelliJ_Project), den man einfach in IntelliJ als Project öffnen kann, befinden.
 
-So müsste das doch alles ziemlich enspannt klappen gib bescheid wenn du was ändern willst. &#x2642</pre>
+So müsste das doch alles ziemlich enspannt klappen gib bescheid wenn du was ändern willst. &#x1F937&#x2642</pre>
 
