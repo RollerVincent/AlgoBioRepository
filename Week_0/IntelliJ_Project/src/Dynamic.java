@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Scanner;
 
 public class Dynamic implements SequenceAlgorithm {
     /*
@@ -79,28 +78,6 @@ public class Dynamic implements SequenceAlgorithm {
         return results;
     }
 
-    private Integer[] parseSequence(String input){
-        String[] tmp = input.split("\t");
-        Integer[] back = new Integer[tmp.length];
-        for(int i=0; i<tmp.length;i++){
-            try{
-                back[i] = Integer.parseInt(tmp[i]);
-            }catch (NumberFormatException ne){
-                System.err.println("Es duerfen nur Zahlen eingegeben werden!");
-            }
-        }
-        return back;
-
-    }
-
-    /*public static void main(String[] args){
-        Dynamic d  = new Dynamic();
-        Scanner s = new Scanner(System.in);
-        String sequence = s.nextLine();
-        Integer[] a = d.parseSequence(sequence);
-        d.MSS(a, true);
-
-    }*/
 
 
 }
