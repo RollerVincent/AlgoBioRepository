@@ -13,5 +13,5 @@ public interface SequenceAlgorithm {
      *         zweite den Endindex und das dritte den Score darstellt.
      */
 
-    public List<int[]> MSS(Integer[] sequence, boolean findShortest);
+    public List<Integer[]> MSS(Integer[] sequence, boolean findShortest);
 }
