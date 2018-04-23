@@ -24,7 +24,7 @@ public class Main {
 
         List<Integer[]> results = packagingIndex==1 ? Implementation.SMSS(inputArray) : Implementation.AMSS(inputArray);
 
-        produceOutput(outputPath,results);
+        if (!cmd.hasOption("mute")) produceOutput(outputPath,results);
 
     }
 
@@ -39,6 +39,8 @@ public class Main {
         //Wenn nicht, dann wird nach stdout geprintet
         Option output = new Option("o", true, "output file");
         options.addOption(output);
+
+        options.addOption("mute", false, "mute output");
 
         options.addOption("n", false, "naive algorithm");
         options.addOption("l", false, "linear algorithm");
