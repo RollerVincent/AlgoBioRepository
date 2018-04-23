@@ -4,9 +4,9 @@ import java.util.List;
 public class Naive implements SequenceAlgorithm {
 
     @Override
-    public List<int[]> MSS(Integer[] sequence, boolean findShortest) {
+    public List<Integer[]> MSS(Integer[] sequence, boolean findShortest) {
 
-        List<int[]> results = new ArrayList<int[]>();
+        List<Integer[]> results = new ArrayList<>();
 
 
 
