@@ -17,9 +17,11 @@ public class DivideAndConquer extends SequenceAlgorithm {
         List<Integer[]> tmp = new ArrayList<Integer[]>();
 
         if(i==j){
+
             tmp.add(new Integer[]{i,i,a[i]});
 
         } else {
+
             int m = (j + i - 1) / 2;
 
             List<Integer[]> l1 = AMSS_DC(a, i, m);
