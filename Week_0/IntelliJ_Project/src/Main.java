@@ -9,7 +9,8 @@ public class Main {
 
     /* Beim packen der Jars können wir hier die Aufgabennummer angeben und dann in der main methode mit
      * der Fallunterscheidung die jeweiligen passenden Algorithmen ausführen. */
-    static int packagingIndex = 1;
+    //1 für findShortest, 2 für alle
+    static int packagingIndex = 2;
 
     public static void main(String[] args) {
 

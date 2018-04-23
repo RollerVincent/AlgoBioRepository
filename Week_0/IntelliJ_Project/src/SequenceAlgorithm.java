@@ -14,4 +14,6 @@ public interface SequenceAlgorithm {
      */
 
     public List<Integer[]> MSS(Integer[] sequence, boolean findShortest);
+
+
 }

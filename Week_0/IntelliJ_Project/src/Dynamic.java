@@ -39,13 +39,15 @@ public class Dynamic implements SequenceAlgorithm {
                 if(s[i][j]>=maxscore){
                     l = i;
                     r = j;
-                    if(s[i][j] == maxscore){
-                        results.add(Arrays.copyOfRange(sequence,l,r+1));
+                    int oldmax = maxscore;
+                    maxscore = s[i][j];
+                    Integer[] tmp = {l, r, maxscore};
+                    if(s[i][j] == oldmax){
+                        results.add(tmp);
                     }else{
                         results.clear();
-                        results.add(Arrays.copyOfRange(sequence,l,r+1));
+                        results.add(tmp);
                     }
-                    maxscore = s[i][j];
                 }
             }
         }
@@ -64,7 +66,7 @@ public class Dynamic implements SequenceAlgorithm {
         List<Integer[]> tmpresults = new ArrayList<>();
 
         for(Integer[] tmpSeq: results){
-            int tmplength = tmpSeq.length;
+            int tmplength = tmpSeq[1]-tmpSeq[0];
             if(tmplength < shortestLength){
                 shortestLength = tmplength;
                 tmpresults.clear();
