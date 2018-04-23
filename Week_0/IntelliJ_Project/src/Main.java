@@ -97,10 +97,10 @@ public class Main {
         /** Hier ist die Fallunterscheidung für die jeweiligen Jars */
 
         if (packagingIndex==1){
-            results = currentAlgorithm.MSS(inputArray,true);
+            results = currentAlgorithm.SMSS(inputArray);
 
         }else if(packagingIndex==2){
-            results = currentAlgorithm.MSS(inputArray,false);
+            results = currentAlgorithm.AMSS(inputArray);
 
         }
 

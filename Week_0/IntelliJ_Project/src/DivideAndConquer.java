@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public class DivideAndConquer implements SequenceAlgorithm {
+public class DivideAndConquer extends SequenceAlgorithm {
 
     //Heute schreibe ich noch DivideandConquer
     //TODO
@@ -9,7 +9,7 @@ public class DivideAndConquer implements SequenceAlgorithm {
 
 
     @Override
-    public List<Integer[]> MSS(Integer[] sequence, boolean findShortest) {
+    public List<Integer[]> AMSS(Integer[] sequence) {
 
         List<Integer[]> results = new ArrayList<>();
 
