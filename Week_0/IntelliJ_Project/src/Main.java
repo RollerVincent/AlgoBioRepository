@@ -7,20 +7,29 @@ import java.util.List;
 
 public class Main {
 
-    /* Beim packen der Jars können wir hier die Aufgabennummer angeben und dann in der main methode mit
-     * der Fallunterscheidung die jeweiligen passenden Algorithmen ausführen. */
-    static int packagingIndex = 1;
+
+    static int packagingIndex = 2;
+
 
     public static void main(String[] args) {
 
-        ArrayList<Integer> inputSequence = new ArrayList<Integer>();   // enthält die eingelesenen Zahlen
-        SequenceAlgorithm currentAlgorithm = null;   // führt je nach Flag die richtige Implementation aus
-        String outputPath = null;   // Pfad zur output Datei
-        List<Integer[]> results = null; // Liste der gefundenen MSS
+        CommandLine cmd = parseArgs(args);
+        if (cmd == null) return;
+
+        Integer[] inputArray  = parseInput(cmd.getOptionValue("i"));
+
+        SequenceAlgorithm Implementation = getImplementation(cmd);
+
+        String outputPath = cmd.hasOption("o") ?  cmd.getOptionValue("o") : null;
+
+        List<Integer[]> results = packagingIndex==1 ? Implementation.SMSS(inputArray) : Implementation.AMSS(inputArray);
+
+        produceOutput(outputPath,results);
+
+    }
 
 
-
-
+    static CommandLine parseArgs(String[] args){
         Options options = new Options();
 
         Option input = new Option("i", true, "input file");
@@ -46,24 +55,22 @@ public class Main {
             System.out.println(e.getMessage());
             formatter.printHelp("Main", options);
             System.exit(1);
-            return;
+            return null;
         }
 
         if(!(cmd.hasOption("n")|cmd.hasOption("l")|cmd.hasOption("d")|cmd.hasOption("dc"))){
             System.out.println("Choose an algorithm flag ([-n|-l|-d|-dc])");
             formatter.printHelp("Main", options);
             System.exit(1);
-            return;
+            return null;
         }
 
+        return cmd;
+    }
 
-
-        if(cmd.hasOption("o")) {
-            outputPath = cmd.getOptionValue("o");
-        }
-
-
-        try(BufferedReader br = new BufferedReader(new FileReader(cmd.getOptionValue("i")))) {
+    static Integer[] parseInput(String path){
+        ArrayList<Integer> inputSequence = new ArrayList<Integer>();
+        try(BufferedReader br = new BufferedReader(new FileReader(path))) {
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
             while (line != null) {
@@ -74,40 +81,33 @@ public class Main {
                 }
                 line = br.readLine();
             }
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
 
+        return inputSequence.toArray(new Integer[inputSequence.size()]);
+
+    }
+
+    static SequenceAlgorithm getImplementation(CommandLine cmd){
         if(cmd.hasOption("n")){
-            currentAlgorithm = new Naive();
+            return new Naive();
         }else if(cmd.hasOption("dc")){
-            currentAlgorithm = new DivideAndConquer();
+            return new DivideAndConquer();
         }else if(cmd.hasOption("d")){
-            currentAlgorithm = new Dynamic();
+            return new Dynamic();
         }else if(cmd.hasOption("l")){
-            currentAlgorithm = new Linear();
+            return new Linear();
         }
+        return null;
+    }
 
-
-        Integer[] inputArray  = inputSequence.toArray(new Integer[inputSequence.size()]);
-
-        /** Hier ist die Fallunterscheidung für die jeweiligen Jars */
-
-        if (packagingIndex==1){
-            results = currentAlgorithm.SMSS(inputArray);
-
-        }else if(packagingIndex==2){
-            results = currentAlgorithm.AMSS(inputArray);
-
-        }
-
-
+    static void produceOutput(String path, List<Integer[]> results){
         try {
-            if(outputPath!=null) {
-                PrintWriter writer = new PrintWriter(outputPath, "UTF-8");
+            if(path!=null) {
+                PrintWriter writer = new PrintWriter(path, "UTF-8");
                 for (int i = 0; i < results.size(); i++) {
                     writer.println(results.get(i)[0] + "\t" + results.get(i)[1] + "\t" + results.get(i)[2]);
                 }
@@ -123,9 +123,6 @@ public class Main {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-
-
-
 
     }
 
