@@ -16,7 +16,7 @@ public class Main {
         ArrayList<Integer> inputSequence = new ArrayList<Integer>();   // enthält die eingelesenen Zahlen
         SequenceAlgorithm currentAlgorithm = null;   // führt je nach Flag die richtige Implementation aus
         String outputPath = null;   // Pfad zur output Datei
-        List<int[]> results = null; // Liste der gefundenen MSS
+        List<Integer[]> results = null; // Liste der gefundenen MSS
 
 
 
@@ -27,8 +27,8 @@ public class Main {
         input.setRequired(true);
         options.addOption(input);
 
+        //Wenn nicht, dann wird nach stdout geprintet
         Option output = new Option("o", true, "output file");
-        output.setRequired(true);
         options.addOption(output);
 
         options.addOption("n", false, "naive algorithm");
@@ -58,7 +58,9 @@ public class Main {
 
 
 
-        outputPath = cmd.getOptionValue("o");
+        if(cmd.hasOption("o")) {
+            outputPath = cmd.getOptionValue("o");
+        }
 
 
         try(BufferedReader br = new BufferedReader(new FileReader(cmd.getOptionValue("i")))) {
@@ -104,11 +106,18 @@ public class Main {
 
 
         try {
-            PrintWriter writer = new PrintWriter(outputPath, "UTF-8");
-            for (int i = 0; i < results.size(); i++) {
-                writer.println(results.get(i)[0]+"\t"+results.get(i)[1]+"\t"+results.get(i)[2]);
+            if(outputPath!=null) {
+                PrintWriter writer = new PrintWriter(outputPath, "UTF-8");
+                for (int i = 0; i < results.size(); i++) {
+                    writer.println(results.get(i)[0] + "\t" + results.get(i)[1] + "\t" + results.get(i)[2]);
+                }
+                writer.close();
+            }else{
+                for(Integer[] i: results){
+                    for(int j=0; j<i.length;j++) System.out.print(i[j]+ "\t");
+                    System.out.println();
+                }
             }
-            writer.close();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (UnsupportedEncodingException e) {

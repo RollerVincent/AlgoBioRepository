@@ -3,10 +3,15 @@ import java.util.List;
 
 public class DivideAndConquer implements SequenceAlgorithm {
 
-    @Override
-    public List<int[]> MSS(Integer[] sequence, boolean findShortest) {
+    //Heute schreibe ich noch DivideandConquer
+    //TODO
 
-        List<int[]> results = new ArrayList<int[]>();
+
+
+    @Override
+    public List<Integer[]> MSS(Integer[] sequence, boolean findShortest) {
+
+        List<Integer[]> results = new ArrayList<>();
 
 
         return results;
