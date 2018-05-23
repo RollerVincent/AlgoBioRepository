@@ -9,6 +9,9 @@ So müsste das doch alles ziemlich enspannt klappen gib bescheid wenn du was än
 Blatt 1: 40/40 Punkte
 Blatt 2: 32/40 Punkte
 Blatt 3: 32.5/40 Punkte
+Blatt 4: 37/40 Punkte
 
+
+Gesamt: 141.5/160 = 88.4%
 </pre>
 
