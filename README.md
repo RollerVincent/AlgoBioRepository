@@ -10,8 +10,9 @@ Blatt 1: 40/40 Punkte
 Blatt 2: 32/40 Punkte
 Blatt 3: 32.5/40 Punkte
 Blatt 4: 37/40 Punkte
+Blatt 5: 35/40 Punkte
+Blatt 6: 34/50 Punkte
 
-
-Gesamt: 141.5/160 = 88.4%
+Gesamt: 210.5/240 = 87.7%
 </pre>
 
