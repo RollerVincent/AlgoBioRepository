@@ -14,5 +14,7 @@ Blatt 5: 35/40 Punkte
 Blatt 6: 34/50 Punkte
 
 Gesamt: 210.5/240 = 87.7%
+
+Insgesamt: 210.5/480 = 43.9%
 </pre>
 
