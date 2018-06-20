@@ -17,6 +17,6 @@ Blatt 8: 34/40 Punkte
 
 Gesamt: 271.5/320 = 84.8%
 
-Insgesamt: 271.5/480 = 56.6%
+Insgesamt: 271.5/440 = 61.7%
 </pre>
 
