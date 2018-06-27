@@ -14,9 +14,10 @@ Blatt 5: 35/40 Punkte
 Blatt 6: 34/40 Punkte
 Blatt 7: 27/40 Punkte
 Blatt 8: 34/40 Punkte
+Blatt 9: 10/40 Punkte
 
-Gesamt: 271.5/320 = 84.8%
+Gesamt: 281.5/360 = 78.2%
 
-Insgesamt: 271.5/440 = 61.7%
+Insgesamt: 281.5/440 = 63.9%
 </pre>
 
