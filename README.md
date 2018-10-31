@@ -1,5 +1,12 @@
 # AlgoBioRepository
 
+AlgoBio2 Punkte: 
+
+Blatt 1: 32/40 Punkte
+
+
+
+
 <pre>Ich dachte mir, am besten hauen wir für jede Woche einen neuen Ordner rein,
 in dem sich jeweils ein weiterer Ordner (Files) mit den Datein zu den Aufgaben 
 und ein Ordner (IntelliJ_Project), den man einfach in IntelliJ als Project öffnen kann, befinden.
