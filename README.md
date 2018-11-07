@@ -5,9 +5,11 @@
 AlgoBio2 Punkte: 
 
 Blatt 1: 32/40 Punkte
+Blatt 2: 37/40 Punkte
 
 
-Insgesamt: 32/40 = 80%
+
+Insgesamt: 69/80 = 86%
 </pre>
 <pre>Ich dachte mir, am besten hauen wir für jede Woche einen neuen Ordner rein,
 in dem sich jeweils ein weiterer Ordner (Files) mit den Datein zu den Aufgaben 
