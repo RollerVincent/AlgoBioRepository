@@ -9,9 +9,10 @@ Blatt 2: 37/40 Punkte
 Blatt 3: 33/40 Punkte
 Blatt 4: 33/40 Punkte
 Blatt 5: 35/40 Punkte
+Blatt 6: 35.5/40 Punkte
 
 
-Insgesamt: 170/200 = 85%
+Insgesamt: 205.5/240 = 85.625%
 </pre>
 <pre>Ich dachte mir, am besten hauen wir für jede Woche einen neuen Ordner rein,
 in dem sich jeweils ein weiterer Ordner (Files) mit den Datein zu den Aufgaben 
