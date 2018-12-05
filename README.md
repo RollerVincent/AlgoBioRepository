@@ -13,6 +13,7 @@ Blatt 6: 35.5/40 Punkte
 
 
 Insgesamt: 205.5/240 = 85.625%
+           205.5/560 = 36.7%
 </pre>
 <pre>Ich dachte mir, am besten hauen wir für jede Woche einen neuen Ordner rein,
 in dem sich jeweils ein weiterer Ordner (Files) mit den Datein zu den Aufgaben 
