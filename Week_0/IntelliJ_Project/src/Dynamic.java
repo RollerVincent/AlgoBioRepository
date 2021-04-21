@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Dynamic implements SequenceAlgorithm {
+public class Dynamic extends SequenceAlgorithm {
     /*
             |-> 0,               für i>j
     σ(i,j)= |-> a[i],            für i=j
@@ -23,7 +23,7 @@ public class Dynamic implements SequenceAlgorithm {
      */
 
     @Override
-    public List<Integer[]> MSS(Integer[] sequence, boolean findShortest) {
+    public List<Integer[]> AMSS(Integer[] sequence) {
 
         List<Integer[]> results = new ArrayList<>();
         int n = sequence.length;
@@ -39,42 +39,18 @@ public class Dynamic implements SequenceAlgorithm {
                 if(s[i][j]>=maxscore){
                     l = i;
                     r = j;
-                    if(s[i][j] == maxscore){
-                        results.add(Arrays.copyOfRange(sequence,l,r+1));
+                    int oldmax = maxscore;
+                    maxscore = s[i][j];
+                    Integer[] tmp = {l, r, maxscore};
+                    if(s[i][j] == oldmax){
+                        results.add(tmp);
                     }else{
                         results.clear();
-                        results.add(Arrays.copyOfRange(sequence,l,r+1));
+                        results.add(tmp);
                     }
-                    maxscore = s[i][j];
                 }
             }
         }
-
-        if(findShortest){
-            results = findShortestSequence(results);
-            results = results.subList(0,1);
-        }
-
-
-        return results;
-    }
-
-    public List<Integer[]> findShortestSequence(List<Integer[]> results){
-        int shortestLength = Integer.MAX_VALUE;
-        List<Integer[]> tmpresults = new ArrayList<>();
-
-        for(Integer[] tmpSeq: results){
-            int tmplength = tmpSeq.length;
-            if(tmplength < shortestLength){
-                shortestLength = tmplength;
-                tmpresults.clear();
-                tmpresults.add(tmpSeq);
-            }else if(tmplength == shortestLength){
-                tmpresults.add(tmpSeq);
-            }
-        }
-
-        results = tmpresults;
         return results;
     }
 

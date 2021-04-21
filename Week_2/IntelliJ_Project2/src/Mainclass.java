@@ -1,35 +1,29 @@
+import java.io.*;
+import java.util.*;
+
 import org.apache.commons.cli.*;
 
-import java.io.*;
-import java.util.ArrayList;
-import java.util.List;
-
-
-public class Main {
-
-
-    static int packagingIndex = 2;
-
+public class Mainclass {
 
     public static void main(String[] args) {
-
         CommandLine cmd = parseArgs(args);
         if (cmd == null) return;
+        int[] inputArray  = parseInput(cmd.getOptionValue("i"));
 
-        Integer[] inputArray  = parseInput(cmd.getOptionValue("i"));
-
-        SequenceAlgorithm Implementation = getImplementation(cmd);
+        Sorting implementation = getImplementation(cmd);
 
         String outputPath = cmd.hasOption("o") ?  cmd.getOptionValue("o") : null;
 
-        List<Integer[]> results = packagingIndex==1 ? Implementation.SMSS(inputArray) : Implementation.AMSS(inputArray);
-
-        if (!cmd.hasOption("mute")) produceOutput(outputPath,results);
+        implementation.sort(inputArray);
+        produceOutput(outputPath, inputArray);
 
     }
 
-
-    static CommandLine parseArgs(String[] args){
+    //i: Input Datei
+    //-s: Insertionsort
+    //-m: Mergesort
+    //-o: Outputfile (optional)
+    private static CommandLine parseArgs(String[] args){
         Options options = new Options();
 
         Option input = new Option("i", true, "input file");
@@ -40,12 +34,9 @@ public class Main {
         Option output = new Option("o", true, "output file");
         options.addOption(output);
 
-        options.addOption("mute", false, "mute output");
 
-        options.addOption("n", false, "naive algorithm");
-        options.addOption("l", false, "linear algorithm");
-        options.addOption("d", false, "dynamic algorithm");
-        options.addOption("dc", false, "divide and conquer algorithm");
+        options.addOption("s", false, "insertionsort");
+        options.addOption("m", false, "mergesort");
 
         CommandLineParser parser = new DefaultParser();
         HelpFormatter formatter = new HelpFormatter();
@@ -60,8 +51,8 @@ public class Main {
             return null;
         }
 
-        if(!(cmd.hasOption("n")|cmd.hasOption("l")|cmd.hasOption("d")|cmd.hasOption("dc"))){
-            System.out.println("Choose an algorithm flag ([-n|-l|-d|-dc])");
+        if(!(cmd.hasOption("s")|cmd.hasOption("m"))){
+            System.out.println("Choose an algorithm flag ([-s|-m])");
             formatter.printHelp("Mainclass", options);
             System.exit(1);
             return null;
@@ -70,7 +61,8 @@ public class Main {
         return cmd;
     }
 
-    static Integer[] parseInput(String path){
+
+    private static int[] parseInput(String path){
         ArrayList<Integer> inputSequence = new ArrayList<Integer>();
         try(BufferedReader br = new BufferedReader(new FileReader(path))) {
             StringBuilder sb = new StringBuilder();
@@ -89,35 +81,31 @@ public class Main {
             e.printStackTrace();
         }
 
-        return inputSequence.toArray(new Integer[inputSequence.size()]);
+        return inputSequence.stream().mapToInt(i->i).toArray();
 
     }
 
-    static SequenceAlgorithm getImplementation(CommandLine cmd){
-        if(cmd.hasOption("n")){
-            return new Naive();
-        }else if(cmd.hasOption("dc")){
-            return new DivideAndConquer();
-        }else if(cmd.hasOption("d")){
-            return new Dynamic();
-        }else if(cmd.hasOption("l")){
-            return new Linear();
+    private static Sorting getImplementation(CommandLine cmd){
+        if(cmd.hasOption("s")){
+            return new Insertionsort();
+        }else if(cmd.hasOption("m")){
+            return new Mergesort();
         }
         return null;
     }
 
-    static void produceOutput(String path, List<Integer[]> results){
+
+    private static void produceOutput(String path, int[] results){
         try {
             if(path!=null) {
                 PrintWriter writer = new PrintWriter(path, "UTF-8");
-                for (int i = 0; i < results.size(); i++) {
-                    writer.println(results.get(i)[0] + "\t" + results.get(i)[1] + "\t" + results.get(i)[2]);
+                for (int i = 0; i < results.length; i++) {
+                    writer.print(results[i] + "\t");
                 }
                 writer.close();
             }else{
-                for(Integer[] i: results){
-                    for(int j=0; j<i.length;j++) System.out.print(i[j]+ "\t");
-                    System.out.println();
+                for(int i=0; i<results.length; i++){
+                    System.out.print(results[i] + "\t");
                 }
             }
         } catch (FileNotFoundException e) {

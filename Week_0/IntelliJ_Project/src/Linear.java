@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
-public class Linear implements SequenceAlgorithm {
+public class Linear extends SequenceAlgorithm {
 
     /*
     begin
@@ -23,7 +23,7 @@ public class Linear implements SequenceAlgorithm {
      */
 
     @Override
-    public List<Integer[]> MSS(Integer[] sequence, boolean findShortest) {
+    public List<Integer[]> AMSS(Integer[] sequence) {
 
         List<Integer[]> results = new ArrayList<>();
 
@@ -43,28 +43,25 @@ public class Linear implements SequenceAlgorithm {
             if(rmaxscore>=maxscore){
                 l = rstart;
                 r=i;
+                Integer[] tmp = {l,r,rmaxscore};
 
                 if(rmaxscore == maxscore){
-                    results.add(Arrays.copyOfRange(sequence,l,r+1));
+                    results.add(tmp);
 
                 }else{
                     results.clear();
-                    results.add(Arrays.copyOfRange(sequence,l,r+1));
+                    results.add(tmp);
                 }
                 int tmpl = l;
                 while(tmpl!=0 && sequence[tmpl-1]==0){
                     tmpl--;
-                    results.add(Arrays.copyOfRange(sequence, tmpl, r+1));
+                    Integer[] tmp2 = {tmpl,r,rmaxscore};
+                    results.add(tmp2);
                 }
                 maxscore = rmaxscore;
             }
         }
 
-        if(findShortest){
-            Dynamic d = new Dynamic();
-            results = d.findShortestSequence(results);
-            results = results.subList(0,1);
-        }
 
         return results;
     }
